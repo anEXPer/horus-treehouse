@@ -7,4 +7,6 @@ fn main() {
     stdin()
         .read_line(&mut visitor_name)
         .expect("Failed to read line:");
+        visitor_name = visitor_name.trim().to_string();
+   println!("Hello, {visitor_name}. Welcome.")
 }
