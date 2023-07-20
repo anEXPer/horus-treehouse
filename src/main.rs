@@ -1,3 +1,4 @@
+#![warn(clippy::all, clippy::pedantic)]
 use std::io::stdin;
 
 fn main() {
@@ -8,5 +9,5 @@ fn main() {
         .read_line(&mut visitor_name)
         .expect("Failed to read line:");
         visitor_name = visitor_name.trim().to_string();
-   println!("Hello, {visitor_name}. Welcome.")
+   println!("Hello, {visitor_name}. Welcome.");
 }
