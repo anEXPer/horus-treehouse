@@ -8,10 +8,11 @@ fn main() {
     stdin()
         .read_line(&mut visitor_name)
         .expect("Failed to read line:");
-    visitor_name = visitor_name.trim().to_lowercase().to_string();
+    visitor_name = visitor_name.trim().to_lowercase();
 
     if visitor_name == "bert" {
         println!("Hello, {visitor_name}. Welcome.");
     } else {
-    println!("Sorry, {visitor_name}, you are not on the list.")}
+        println!("Sorry, {visitor_name}, you are not on the list.");
+    }
 }
