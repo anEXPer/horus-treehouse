@@ -11,8 +11,3 @@ fn main() {
     visitor_name = visitor_name.trim().to_string();
     println!("Hello, {visitor_name}. Welcome.");
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-}
