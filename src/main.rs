@@ -4,6 +4,7 @@ use std::io::stdin;
 fn main() {
     // statements: declarations
 
+    #[derive(Debug)]
     struct Visitor {
         name: String,
         greeting: String,
