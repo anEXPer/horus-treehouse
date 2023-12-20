@@ -2,7 +2,6 @@
 use std::io::stdin;
 
 fn main() {
-
     // statements: declarations
 
     struct Visitor {
@@ -24,9 +23,6 @@ fn main() {
 
     // statements: variables
 
-    let mut guest_allowed = false;
-    let mut confirmed_visitor = Visitor::new("", "");
-
     let visitors_list = [
         Visitor::new("steve", "Hello Steve!"),
         Visitor::new("bert", "Hello Bert you maniac!"),
@@ -41,16 +37,9 @@ fn main() {
     stdin().read_line(&mut guest).expect("Failed to read line:");
     guest = guest.trim().to_lowercase();
 
-    for visitor in &visitors_list {
-        if visitor.name == guest {
-            guest_allowed = true;
-            confirmed_visitor = Visitor::new(&visitor.name, &visitor.greeting);
-        }
-    }
-
-    if guest_allowed {
-        confirmed_visitor.greet();
-    } else {
-        println!("Sorry, {guest}, you are not on the list.");
+    let confirmed_visitor = visitors_list.iter().find(|visitor| visitor.name == guest);
+    match confirmed_visitor {
+        Some(visitor) => visitor.greet(),
+        None => println!("Sorry, {guest}, you are not on the list."),
     }
 }
