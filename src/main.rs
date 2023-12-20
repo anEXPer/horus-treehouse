@@ -24,7 +24,7 @@ fn main() {
 
     // statements: variables
 
-    let visitors_list = [
+    let visitors_list = vec![
         Visitor::new("steve", "Hello Steve!"),
         Visitor::new("bert", "Hello Bert you maniac!"),
         Visitor::new("riz", "Hello Riz, long time no see!"),
