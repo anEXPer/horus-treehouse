@@ -32,15 +32,18 @@ fn main() {
 
     // expressions: behavior
 
-    println!("This is an automated treehouse. Govern Yourself Accordingly. IDENTIFY YOURSELF.");
+    loop {
+        println!("This is an automated treehouse. Govern Yourself Accordingly. IDENTIFY YOURSELF.");
 
-    let mut guest = String::new();
-    stdin().read_line(&mut guest).expect("Failed to read line:");
-    guest = guest.trim().to_lowercase();
+        let mut guest = String::new();
+        stdin().read_line(&mut guest).expect("Failed to read line:");
+        guest = guest.trim().to_lowercase();
 
-    let confirmed_visitor = visitors_list.iter().find(|visitor| visitor.name == guest);
-    match confirmed_visitor {
-        Some(visitor) => visitor.greet(),
-        None => println!("Sorry, {guest}, you are not on the list."),
+        let confirmed_visitor = visitors_list.iter().find(|visitor| visitor.name == guest);
+        match confirmed_visitor {
+            Some(visitor) => visitor.greet(),
+            None => println!("Sorry, {guest}, you are not on the list."),
+        }
+        break;
     }
 }
