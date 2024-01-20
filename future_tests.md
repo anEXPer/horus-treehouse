@@ -18,9 +18,8 @@ Implemented Cases:
 7. Visitors on deny-with-note list are denied and noted
 
 Current work:
-- Refactor: use enumeration field for note
+- Refactor: eliminate duplication in new member addition
 
 Future cases:
-- Refactor: eliminate duplication in new member addition
 4. Guests can be marked as probationary members
 5. Store guest age

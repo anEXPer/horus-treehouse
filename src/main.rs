@@ -1,4 +1,6 @@
 #![warn(clippy::all, clippy::pedantic)]
+#![allow(clippy::single_match_else)]
+
 use std::io::stdin;
 
 #[derive(Debug)]
@@ -39,7 +41,7 @@ fn main() {
                 }
                 VisitorAction::AcceptWithNote { note } => {
                     println!("Access approved!");
-                    println!("{note}",)
+                    println!("{note}",);
                 }
                 VisitorAction::RefuseWithNote { note } => {
                     println!("You are on the deny list.");
