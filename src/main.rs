@@ -22,7 +22,7 @@ fn main() {
             Self {
                 name: name.to_lowercase(),
                 greeting: greeting.to_string(),
-                action: action,
+                action,
             }
         }
         fn greet(&self) {
@@ -49,9 +49,11 @@ fn main() {
     loop {
         println!("This is an automated treehouse. Govern Yourself Accordingly. IDENTIFY YOURSELF.");
 
-        let mut input = String::new();
-        stdin().read_line(&mut input).expect("Failed to read line:");
-        input = input.trim().to_lowercase();
+        let mut rawinput = String::new();
+        stdin()
+            .read_line(&mut rawinput)
+            .expect("Failed to read line:");
+        let input = rawinput.trim().to_lowercase();
 
         let confirmed_visitor = visitors_list.iter().find(|visitor| visitor.name == input);
         match confirmed_visitor {
