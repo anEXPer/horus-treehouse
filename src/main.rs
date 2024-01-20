@@ -54,4 +54,6 @@ fn main() {
             }
         }
     }
+    println!("Final visitor list:");
+    println!("{:#?}", visitors_list);
 }

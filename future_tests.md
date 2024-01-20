@@ -11,4 +11,4 @@ Cases:
     a. User was added, -> standard greeting, no exit
 2. The user started on the list -> custom greeting, no exit
 3. Bare newline/no input -> exit
-4.
+4. On exit, print final visitor list
