@@ -55,5 +55,5 @@ fn main() {
         }
     }
     println!("Final visitor list:");
-    println!("{:#?}", visitors_list);
+    println!("{visitors_list:#?}");
 }
