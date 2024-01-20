@@ -4,9 +4,9 @@ use std::io::stdin;
 #[derive(Debug)]
 enum VisitorAction {
     Accept,
-    AcceptWithNote,
+    AcceptWithNote { note: String },
     Refuse,
-    RefuseWithNote,
+    RefuseWithNote { note: String },
 }
 
 fn main() {
@@ -37,13 +37,13 @@ fn main() {
                     println!("You are on the deny list.");
                     println!("Please leave immediately.");
                 }
-                VisitorAction::AcceptWithNote => {
+                VisitorAction::AcceptWithNote { note } => {
                     println!("Access approved!");
-                    println!("{}", self.greeting)
+                    println!("{note}",)
                 }
-                VisitorAction::RefuseWithNote => {
+                VisitorAction::RefuseWithNote { note } => {
                     println!("You are on the deny list.");
-                    println!("{}", self.greeting);
+                    println!("{note}",);
                 }
             }
         }
@@ -52,27 +52,41 @@ fn main() {
     // statements: variables
 
     let mut visitors_list = vec![
-        Visitor::new("steve", "Hello Steve!", VisitorAction::AcceptWithNote),
+        Visitor::new(
+            "steve",
+            "Hello Steve!",
+            VisitorAction::AcceptWithNote {
+                note: String::from("Hello Steve!"),
+            },
+        ),
         Visitor::new(
             "bert",
             "Hello Bert you maniac!",
-            VisitorAction::AcceptWithNote,
+            VisitorAction::AcceptWithNote {
+                note: String::from("Hello Bert you maniac!"),
+            },
         ),
         Visitor::new(
             "riz",
             "Hello Riz, long time no see!",
-            VisitorAction::AcceptWithNote,
+            VisitorAction::AcceptWithNote {
+                note: String::from("Hello Riz, long time no see!"),
+            },
         ),
         Visitor::new("pat", "Get out of here Pat.", VisitorAction::Refuse),
         Visitor::new(
             "liz",
             "Long time no see, Liz!",
-            VisitorAction::AcceptWithNote,
+            VisitorAction::AcceptWithNote {
+                note: String::from("Long time no see, Liz!"),
+            },
         ),
         Visitor::new(
             "patty-g",
             "I'm not impressed, Pat.",
-            VisitorAction::RefuseWithNote,
+            VisitorAction::RefuseWithNote {
+                note: String::from("I'm not impressed, Pat."),
+            },
         ),
     ];
 
