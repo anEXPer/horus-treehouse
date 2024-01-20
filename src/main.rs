@@ -1,6 +1,12 @@
 #![warn(clippy::all, clippy::pedantic)]
 use std::io::stdin;
 
+#[derive(Debug)]
+enum VisitorAction {
+    Accept,
+    Refuse,
+}
+
 fn main() {
     // statements: declarations
 
@@ -8,26 +14,34 @@ fn main() {
     struct Visitor {
         name: String,
         greeting: String,
+        action: VisitorAction,
     }
 
     impl Visitor {
-        fn new(name: &str, greeting: &str) -> Self {
+        fn new(name: &str, greeting: &str, action: VisitorAction) -> Self {
             Self {
                 name: name.to_lowercase(),
                 greeting: greeting.to_string(),
+                action: action,
             }
         }
         fn greet(&self) {
-            println!("{}", self.greeting);
+            match &self.action {
+                VisitorAction::Accept => println!("{}", self.greeting),
+                VisitorAction::Refuse => {
+                    println!("You are on the deny list. Please leave immediately.");
+                }
+            }
         }
     }
 
     // statements: variables
 
     let mut visitors_list = vec![
-        Visitor::new("steve", "Hello Steve!"),
-        Visitor::new("bert", "Hello Bert you maniac!"),
-        Visitor::new("riz", "Hello Riz, long time no see!"),
+        Visitor::new("steve", "Hello Steve!", VisitorAction::Accept),
+        Visitor::new("bert", "Hello Bert you maniac!", VisitorAction::Accept),
+        Visitor::new("riz", "Hello Riz, long time no see!", VisitorAction::Accept),
+        Visitor::new("pat", "Get out of here Pat.", VisitorAction::Refuse),
     ];
 
     // expressions: behavior
@@ -35,22 +49,26 @@ fn main() {
     loop {
         println!("This is an automated treehouse. Govern Yourself Accordingly. IDENTIFY YOURSELF.");
 
-        let mut guest = String::new();
-        stdin().read_line(&mut guest).expect("Failed to read line:");
-        guest = guest.trim().to_lowercase();
+        let mut input = String::new();
+        stdin().read_line(&mut input).expect("Failed to read line:");
+        input = input.trim().to_lowercase();
 
-        let confirmed_visitor = visitors_list.iter().find(|visitor| visitor.name == guest);
+        let confirmed_visitor = visitors_list.iter().find(|visitor| visitor.name == input);
         match confirmed_visitor {
             Some(visitor) => visitor.greet(),
             None => {
-                if guest.is_empty() {
+                if input.is_empty() {
                     println!("Input empty - exiting.");
                     break;
                 }
                 println!(
-                    "Welcome, {guest}! As it is your first time, you will be added to the list.",
+                    "Welcome, {input}! As it is your first time, you will be added to the list.",
                 );
-                visitors_list.push(Visitor::new(&guest, "Welcome back new friend!"));
+                visitors_list.push(Visitor::new(
+                    &input,
+                    "Welcome back new friend!",
+                    VisitorAction::Accept,
+                ));
             }
         }
     }
