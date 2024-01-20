@@ -24,7 +24,7 @@ fn main() {
 
     // statements: variables
 
-    let visitors_list = vec![
+    let mut visitors_list = vec![
         Visitor::new("steve", "Hello Steve!"),
         Visitor::new("bert", "Hello Bert you maniac!"),
         Visitor::new("riz", "Hello Riz, long time no see!"),
@@ -44,11 +44,14 @@ fn main() {
             Some(visitor) => visitor.greet(),
             None => {
                 if guest.is_empty() {
+                    println!("Input empty - exiting.");
                     break;
                 }
-                println!("Sorry, {guest}, you are not on the list.");
+                println!(
+                    "Welcome, {guest}! As it is your first time, you will be added to the list.",
+                );
+                visitors_list.push(Visitor::new(&guest, "Welcome back new friend!"));
             }
         }
-        break;
     }
 }
