@@ -4,7 +4,9 @@ use std::io::stdin;
 #[derive(Debug)]
 enum VisitorAction {
     Accept,
+    AcceptWithNote,
     Refuse,
+    RefuseWithNote,
 }
 
 fn main() {
@@ -27,9 +29,21 @@ fn main() {
         }
         fn greet(&self) {
             match &self.action {
-                VisitorAction::Accept => println!("{}", self.greeting),
+                VisitorAction::Accept => {
+                    println!("Access approved!");
+                    println!("Welcome back, new friend!");
+                }
                 VisitorAction::Refuse => {
-                    println!("You are on the deny list. Please leave immediately.");
+                    println!("You are on the deny list.");
+                    println!("Please leave immediately.");
+                }
+                VisitorAction::AcceptWithNote => {
+                    println!("Access approved!");
+                    println!("{}", self.greeting)
+                }
+                VisitorAction::RefuseWithNote => {
+                    println!("You are on the deny list.");
+                    println!("{}", self.greeting);
                 }
             }
         }
@@ -38,10 +52,28 @@ fn main() {
     // statements: variables
 
     let mut visitors_list = vec![
-        Visitor::new("steve", "Hello Steve!", VisitorAction::Accept),
-        Visitor::new("bert", "Hello Bert you maniac!", VisitorAction::Accept),
-        Visitor::new("riz", "Hello Riz, long time no see!", VisitorAction::Accept),
+        Visitor::new("steve", "Hello Steve!", VisitorAction::AcceptWithNote),
+        Visitor::new(
+            "bert",
+            "Hello Bert you maniac!",
+            VisitorAction::AcceptWithNote,
+        ),
+        Visitor::new(
+            "riz",
+            "Hello Riz, long time no see!",
+            VisitorAction::AcceptWithNote,
+        ),
         Visitor::new("pat", "Get out of here Pat.", VisitorAction::Refuse),
+        Visitor::new(
+            "liz",
+            "Long time no see, Liz!",
+            VisitorAction::AcceptWithNote,
+        ),
+        Visitor::new(
+            "patty-g",
+            "I'm not impressed, Pat.",
+            VisitorAction::RefuseWithNote,
+        ),
     ];
 
     // expressions: behavior
