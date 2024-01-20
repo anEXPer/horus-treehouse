@@ -42,7 +42,12 @@ fn main() {
         let confirmed_visitor = visitors_list.iter().find(|visitor| visitor.name == guest);
         match confirmed_visitor {
             Some(visitor) => visitor.greet(),
-            None => println!("Sorry, {guest}, you are not on the list."),
+            None => {
+                if guest.is_empty() {
+                    break;
+                }
+                println!("Sorry, {guest}, you are not on the list.");
+            }
         }
         break;
     }
