@@ -17,15 +17,13 @@ fn main() {
     #[derive(Debug)]
     struct Visitor {
         name: String,
-        greeting: String,
         action: VisitorAction,
     }
 
     impl Visitor {
-        fn new(name: &str, greeting: &str, action: VisitorAction) -> Self {
+        fn new(name: &str, action: VisitorAction) -> Self {
             Self {
                 name: name.to_lowercase(),
-                greeting: greeting.to_string(),
                 action,
             }
         }
@@ -56,36 +54,31 @@ fn main() {
     let mut visitors_list = vec![
         Visitor::new(
             "steve",
-            "Hello Steve!",
             VisitorAction::AcceptWithNote {
                 note: String::from("Hello Steve!"),
             },
         ),
         Visitor::new(
             "bert",
-            "Hello Bert you maniac!",
             VisitorAction::AcceptWithNote {
                 note: String::from("Hello Bert you maniac!"),
             },
         ),
         Visitor::new(
             "riz",
-            "Hello Riz, long time no see!",
             VisitorAction::AcceptWithNote {
                 note: String::from("Hello Riz, long time no see!"),
             },
         ),
-        Visitor::new("pat", "Get out of here Pat.", VisitorAction::Refuse),
+        Visitor::new("pat", VisitorAction::Refuse),
         Visitor::new(
             "liz",
-            "Long time no see, Liz!",
             VisitorAction::AcceptWithNote {
                 note: String::from("Long time no see, Liz!"),
             },
         ),
         Visitor::new(
             "patty-g",
-            "I'm not impressed, Pat.",
             VisitorAction::RefuseWithNote {
                 note: String::from("I'm not impressed, Pat."),
             },
@@ -114,11 +107,7 @@ fn main() {
                 println!(
                     "Welcome, {input}! As it is your first time, you will be added to the list.",
                 );
-                visitors_list.push(Visitor::new(
-                    &input,
-                    "Welcome back new friend!",
-                    VisitorAction::Accept,
-                ));
+                visitors_list.push(Visitor::new(&input, VisitorAction::Accept));
             }
         }
     }
