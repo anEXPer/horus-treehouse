@@ -11,54 +11,50 @@ enum VisitorAction {
     RefuseWithNote { note: String },
 }
 
+#[derive(Debug)]
+struct Visitor {
+    name: String,
+    age: i16,
+    action: VisitorAction,
+}
+
+impl Visitor {
+    fn new(name: &str, age: i16, action: VisitorAction) -> Self {
+        Self {
+            name: name.to_lowercase(),
+            age,
+            action,
+        }
+    }
+    fn greet(&self) {
+        match &self.action {
+            VisitorAction::AcceptProbationary => {
+                println!("Probationary access approved!");
+                println!("Welcome back, new friend!");
+            }
+            VisitorAction::Refuse => {
+                println!("You are on the deny list.");
+                println!("Please leave immediately.");
+            }
+            VisitorAction::AcceptWithNote { note } => {
+                println!("Access approved!");
+                println!("{note}",);
+            }
+            VisitorAction::RefuseWithNote { note } => {
+                println!("You are on the deny list.");
+                println!("{note}",);
+            }
+        }
+        self.check_age();
+    }
+    fn check_age(&self) {
+        if self.age < 21 {
+            println!("Do not order alcohol, as you are underage.");
+        }
+    }
+}
+
 fn main() {
-    // statements: declarations
-
-    #[derive(Debug)]
-    struct Visitor {
-        name: String,
-        age: i8,
-        action: VisitorAction,
-    }
-
-    impl Visitor {
-        fn new(name: &str, age: i8, action: VisitorAction) -> Self {
-            Self {
-                name: name.to_lowercase(),
-                age,
-                action,
-            }
-        }
-        fn greet(&self) {
-            match &self.action {
-                VisitorAction::AcceptProbationary => {
-                    println!("Probationary access approved!");
-                    println!("Welcome back, new friend!");
-                }
-                VisitorAction::Refuse => {
-                    println!("You are on the deny list.");
-                    println!("Please leave immediately.");
-                }
-                VisitorAction::AcceptWithNote { note } => {
-                    println!("Access approved!");
-                    println!("{note}",);
-                }
-                VisitorAction::RefuseWithNote { note } => {
-                    println!("You are on the deny list.");
-                    println!("{note}",);
-                }
-            }
-            self.check_age();
-        }
-        fn check_age(&self) {
-            if self.age < 21 {
-                println!("Do not order alcohol, as you are underage.");
-            }
-        }
-    }
-
-    // statements: variables
-
     let mut visitors_list = vec![
         Visitor::new(
             "steve",
@@ -98,8 +94,6 @@ fn main() {
         ),
     ];
 
-    // expressions: behavior
-
     loop {
         println!("This is an automated treehouse. Govern Yourself Accordingly. IDENTIFY YOURSELF.");
 
@@ -127,7 +121,7 @@ fn main() {
                 stdin()
                     .read_line(&mut raw_age_input)
                     .expect("Failed to read line:");
-                let age_input: i8 = raw_age_input.trim().parse().unwrap();
+                let age_input: i16 = raw_age_input.trim().parse().unwrap();
 
                 let new_visitor =
                     Visitor::new(&name_input, age_input, VisitorAction::AcceptProbationary);

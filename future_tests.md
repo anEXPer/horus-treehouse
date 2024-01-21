@@ -17,8 +17,11 @@ Implemented Cases:
 6. Visitors on the deny list are denied
 7. Visitors on deny-with-note list are denied and noted
 8. Guests can be marked as probationary members
+9. Guests under age of 21 given alcohol warning
+10. Guests 21 and over not given alcohol warning.
+11. New underage members given alcohol warning during intake.
 
 Current work:
-5. Store guest age
 
 Future cases:
+11. panic when empty input (or lots of things) for age
