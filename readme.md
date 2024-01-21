@@ -12,7 +12,7 @@ So I made `future_tests.md` so I could write down test cases.
 This let me stop oscillating and progress.
 
 As of this writing, I'm done with the book chapter about this project.
-I'm about to start another simple project from _Command-Line Rust_.
+I'm about to start another simple project from [_Command-Line Rust_][clrb].
 I picked that because it is educational material that encompasses tests.
 
 If I come back to this project, it will be to add tests,
@@ -31,3 +31,12 @@ The code runs with the default `cargo run` and lints with `cargo clippy`.
 I have run these frequently along with my manual test cases,
 seeking the fast feedback I prefer,
 with the tools I'm constrained to.
+
+## Testing Addendum
+
+Adding acceptance tests to this project
+as described in the book [Command-Line-Rust][clrb]
+because it's close to hand and seems like a reasonable thing to do,
+one chapter in.
+
+[clrb]: https://github.com/kyclark/command-line-rust
