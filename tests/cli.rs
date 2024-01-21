@@ -17,3 +17,9 @@ fn false_not_okay() {
     let mut cmd = Command::cargo_bin("false").unwrap();
     cmd.assert().failure();
 }
+
+#[test]
+fn hello_output() {
+    let mut cmd = Command::cargo_bin("hello").unwrap();
+    cmd.assert().success().stdout("Hello!\n");
+}
