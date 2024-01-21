@@ -16,9 +16,9 @@ Implemented Cases:
 5. Visitor recognition is not case sensitive
 6. Visitors on the deny list are denied
 7. Visitors on deny-with-note list are denied and noted
+8. Guests can be marked as probationary members
 
 Current work:
-4. Guests can be marked as probationary members
+5. Store guest age
 
 Future cases:
-5. Store guest age
