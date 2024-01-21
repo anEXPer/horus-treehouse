@@ -18,8 +18,7 @@ Implemented Cases:
 7. Visitors on deny-with-note list are denied and noted
 
 Current work:
-- Refactor: eliminate duplication in new member addition
+4. Guests can be marked as probationary members
 
 Future cases:
-4. Guests can be marked as probationary members
 5. Store guest age

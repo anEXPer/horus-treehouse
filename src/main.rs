@@ -5,7 +5,7 @@ use std::io::stdin;
 
 #[derive(Debug)]
 enum VisitorAction {
-    Accept,
+    AcceptProbationary,
     AcceptWithNote { note: String },
     Refuse,
     RefuseWithNote { note: String },
@@ -29,8 +29,8 @@ fn main() {
         }
         fn greet(&self) {
             match &self.action {
-                VisitorAction::Accept => {
-                    println!("Access approved!");
+                VisitorAction::AcceptProbationary => {
+                    println!("Probationary access approved!");
                     println!("Welcome back, new friend!");
                 }
                 VisitorAction::Refuse => {
@@ -105,9 +105,9 @@ fn main() {
                     break;
                 }
                 println!(
-                    "Welcome, {input}! As it is your first time, you will be added to the list.",
+                    "Welcome, {input}! As it is your first time, you will be added to the probationary list.",
                 );
-                visitors_list.push(Visitor::new(&input, VisitorAction::Accept));
+                visitors_list.push(Visitor::new(&input, VisitorAction::AcceptProbationary));
             }
         }
     }
