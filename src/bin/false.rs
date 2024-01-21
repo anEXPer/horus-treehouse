@@ -1,5 +1,7 @@
 #![warn(clippy::all, clippy::pedantic)]
 
 fn main() {
-    std::process::exit(1)
+    //Commenting out for identical(?) alt expression
+    //std::process::exit(1);
+    std::process::abort();
 }

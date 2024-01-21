@@ -1,5 +1,6 @@
 #![warn(clippy::all, clippy::pedantic)]
 
 fn main() {
-    std::process::exit(0)
+    // this is just what an empty main does!
+    //std::process::exit(0);
 }
