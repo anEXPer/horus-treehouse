@@ -1,9 +1,13 @@
 use assert_cmd::Command;
+use predicates::prelude::*;
 
 #[test]
-fn works() {
+fn exits_0_with_msg_on_newline() {
     let mut cmd = Command::cargo_bin("treehouse").unwrap();
-    cmd.assert().success();
+    cmd.assert()
+        .success()
+        .stdout(predicate::str::contains("exiting"))
+        .stdout(predicate::str::contains("\n"));
 }
 
 #[test]

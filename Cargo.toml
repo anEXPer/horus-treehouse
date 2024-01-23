@@ -9,3 +9,4 @@ edition = "2021"
 
 [dev-dependencies]
 assert_cmd = "1"
+predicates = "2"

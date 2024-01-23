@@ -22,6 +22,10 @@ Implemented Cases:
 11. New underage members given alcohol warning during intake.
 
 Current work:
+- Explore/explain treehouse exit-0 test success
+  (confusing given interactive/readline input)
 
 Future cases:
 11. panic when empty input (or lots of things) for age
+
+Non-case worklog:
